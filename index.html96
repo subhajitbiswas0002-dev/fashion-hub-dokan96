@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags Starts Here (Google Search er jonno) -->
+    <title>Premium Fashion - Best Clothing Store in Kakdwip</title>
+    <meta name="description" content="Kakdwip-er shera premium clothing store. Ekhane paben notun trending shirts, jeans, baggy fit, winter wear ar onnek kichu. Kakdwip, Namkhana, Nischindapur, Kamarhat er customer der jonno special offer!">
+    <meta name="keywords" content="Clothing store in Kakdwip, Kakdwip best fashion, Mens wear Kakdwip, Namkhana shirt shop, Nischindapur clothing, Kamarhat dresses, South 24 Parganas fashion, Premium shirts, Baggy jeans, Korean shirts Kakdwip, Trending clothes, Pujo collection">
+    <meta name="author" content="Fashion Hub">
+    <!-- SEO Meta Tags Ends Here -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables - Premium Theme */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --gold-main: #D4AF37;
+            --text-light: #ffffff;
+            --text-gray: #aaaaaa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-light); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Header */
+        header { background: #000000; border-bottom: 2px solid var(--gold-main); text-align: center; padding: 20px 0; position: sticky; top: 0; z-index: 100; }
+        header h1 { color: var(--gold-main); font-size: 28px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+
+        /* Hero Banner */
+        .hero { background-image: url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800'); background-size: cover; background-position: center; height: 250px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #333; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); }
+        .hero-content { position: relative; text-align: center; animation: fadeIn 1s ease; }
+        .hero-content h2 { font-size: 30px; color: var(--gold-main); text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3); }
+        .hero-content p { color: var(--text-gray); font-weight: 300; letter-spacing: 1px; }
+
+        /* Layout */
+        .container { padding: 30px 20px; max-width: 800px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 25px; font-size: 22px; color: var(--gold-main); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px dashed var(--gold-main); display: inline-block; padding-bottom: 5px; width: 100%; }
+        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; animation: fadeIn 0.5s ease; }
+
+        /* Cards */
+        .card { background: var(--bg-card); border: 1px solid #333; border-radius: 12px; overflow: hidden; transition: 0.3s ease; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .card:hover { border-color: var(--gold-main); transform: translateY(-5px); box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15); }
+        .card img { width: 100%; height: 160px; object-fit: cover; border-bottom: 1px solid #333; }
+        .card-info { padding: 12px; text-align: center; }
+        .card-info h3 { font-size: 14px; color: var(--text-light); font-weight: 500; }
+        .card-price { color: var(--gold-main); font-weight: 700; margin-top: 5px; font-size: 15px; }
+
+        /* Buttons */
+        .back-btn { background: transparent; color: var(--gold-main); border: 1px solid var(--gold-main); padding: 8px 20px; border-radius: 30px; font-size: 14px; cursor: pointer; margin-bottom: 25px; transition: 0.3s; }
+        .back-btn:hover { background: var(--gold-main); color: var(--bg-dark); }
+
+        /* Modal (Pop-up) */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .modal-content { background: var(--bg-card); width: 90%; max-width: 450px; border-radius: 15px; border: 1px solid var(--gold-main); padding: 20px; position: relative; max-height: 90vh; overflow-y: auto; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; color: var(--gold-main); cursor: pointer; }
+        .main-img-box img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; border: 1px solid #333; }
+        .thumbnails { display: flex; gap: 10px; margin-top: 15px; justify-content: center; }
+        .thumbnails img { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid transparent; cursor: pointer; transition: 0.3s; }
+        .thumbnails img:hover { border-color: var(--gold-main); }
+        .modal-title { font-size: 20px; color: var(--gold-main); margin-top: 20px; }
+        .modal-price { font-size: 22px; font-weight: 700; color: var(--text-light); margin: 5px 0 15px; }
+        .modal-desc { font-size: 13px; color: var(--text-gray); line-height: 1.6; margin-bottom: 25px; }
+        .whatsapp-btn { display: block; background: var(--gold-main); color: var(--bg-dark); text-align: center; padding: 15px; text-decoration: none; font-size: 16px; font-weight: 700; border-radius: 8px; text-transform: uppercase; transition: 0.3s; }
+        
+        #products-view { display: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Exclusive Men's</h1>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Premium Collection</h2>
+            <p>Serving Kakdwip, Namkhana & Nischindapur</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Categories View -->
+        <div id="categories-view">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="grid-container" id="category-list"></div>
+        </div>
+
+        <!-- Products View -->
+        <div id="products-view">
+            <button class="back-btn" onclick="goBack()">← Back to Categories</button>
+            <h2 class="section-title" id="category-title">Items</h2>
+            <div class="grid-container" id="products-list"></div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="main-img-box"><img id="main-modal-img" src="" alt="Main View"></div>
+            <div class="thumbnails">
+                <img id="thumb1" src="" onclick="changeMainImg(this.src)" alt="Front">
+                <img id="thumb2" src="" onclick="changeMainImg(this.src)" alt="Back">
+                <img id="thumb3" src="" onclick="changeMainImg(this.src)" alt="Close Up">
+            </div>
+            <h3 class="modal-title" id="modal-title">Name</h3>
+            <div class="modal-price" id="modal-price">Price</div>
+            <p class="modal-desc" id="modal-desc">Description</p>
+            <!-- WhatsApp Button -->
+            <a href="#" id="modal-whatsapp" class="whatsapp-btn">Order Now</a>
+        </div>
+    </div>
+
+    <script>
+        const styles = [
+            "Black Edition", "White Premium", "Navy Blue", "Olive Green", "Charcoal Grey", 
+            "Classic Maroon", "Beige Vintage", "Coffee Brown", "Mustard Yellow", "Teal Blue", 
+            "Urban Street", "Classic Wash", "Signature", "Limited Edition", "Modern Cut", 
+            "Authentic Wear", "Essential Fit", "Premium Range", "Summer Special", "Winter Exclusive"
+        ];
+
+        const categoryBases = {
+            'korean': { title: "Korean Shirts", img: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=400", price: 899 },
+            'street': { title: "Street Fit Tees", img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400", price: 699 },
+            'cargo': { title: "Cargo Pants", img: "https://images.unsplash.com/photo-1624378439575-d1ead6bbd7c6?w=400", price: 1299 },
+            'parachute': { title: "Parachute Pants", img: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=400", price: 1199 },
+            'baggy_jeans': { title: "Baggy Jeans", img: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400", price: 1399 },
+            'vintage_jackets': { title: "Vintage Jackets", img: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400", price: 1999 },
+            'formal_shirts': { title: "Formal Shirts", img: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400", price: 799 },
+            'chinos': { title: "Chino Trousers", img: "https://images.unsplash.com/photo-1624378441864-6dea7e8dcb7b?w=400", price: 1099 },
+            'polo_tees': { title: "Polo T-Shirts", img: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400", price: 599 },
+            'hoodies': { title: "Hoodies", img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400", price: 1150 },
+            'kurtas': { title: "Ethnic Kurtas", img: "https://images.unsplash.com/photo-1593030761756-1d8dd2a7e8bf?w=400", price: 1400 },
+            'gym_wear': { title: "Gym Wear", img: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=400", price: 499 },
+            'denim_jackets': { title: "Denim Jackets", img: "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=400", price: 1499 },
+            'shorts': { title: "Casual Shorts", img: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400", price: 450 },
+            'party_shirts': { title: "Party Shirts", img: "https://images.unsplash.com/photo-1596755094514-f87e32f85e23?w=400", price: 999 },
+            'blazers': { title: "Premium Blazers", img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400", price: 2999 },
+            'linen': { title: "Linen Shirts", img: "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=400", price: 1100 },
+            'winter_coats': { title: "Winter Coats", img: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400", price: 3499 },
+            'trackpants': { title: "Track Pants", img: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400", price: 650 },
+            'coord_sets': { title: "Co-ord Sets", img: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400", price: 1299 }
+        };
+
+        const storeData = {};
+        for (let key in categoryBases) {
+            let cat = categoryBases[key];
+            let itemsArray = [];
+            for (let i = 0; i < 20; i++) {
+                itemsArray.push({
+                    name: styles[i] + " " + cat.title,
+                    price: "₹ " + (cat.price + (i * 20)), 
+                    desc: "Premium quality " + styles[i] + " design. Comfortable and stylish fit for everyday wear. Best in class fabric.",
+                    images: [
+                        cat.img.replace('w=400', 'w=600'), 
+                        "https://images.unsplash.com/photo-1598032895397-b9472444bf93?w=600",
+                        "https://images.unsplash.com/photo-1584286595398-a59f21d313f5?w=600"
+                    ]
+                });
+            }
+            storeData[key] = { title: cat.title, thumbnail: cat.img, items: itemsArray };
+        }
+
+        window.onload = function() {
+            const catList = document.getElementById('category-list');
+            for (let key in storeData) {
+                catList.innerHTML += `
+                    <div class="card" onclick="openCategory('${key}')">
+                        <img src="${storeData[key].thumbnail}" alt="${storeData[key].title}">
+                        <div class="card-info"><h3>${storeData[key].title}</h3></div>
+                    </div>
+                `;
+            }
+        };
+
+        const categoriesView = document.getElementById('categories-view');
+        const productsView = document.getElementById('products-view');
+        const productsList = document.getElementById('products-list');
+        const modal = document.getElementById('productModal');
+        let currentItem = null;
+
+        function openCategory(catId) {
+            document.getElementById('category-title').innerText = storeData[catId].title;
+            productsList.innerHTML = ''; 
+            storeData[catId].items.forEach((item, i) => {
+                productsList.innerHTML += `
+                    <div class="card" onclick="openModal('${catId}', ${i})">
+                        <img src="${item.images[0]}" alt="${item.name}">
+                        <div class="card-info">
+                            <h3>${item.name}</h3>
+                            <div class="card-price">${item.price}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            categoriesView.style.display = 'none';
+            productsView.style.display = 'block';
+            window.scrollTo(0, 0); 
+        }
+
+        function goBack() { productsView.style.display = 'none'; categoriesView.style.display = 'block'; }
+
+        function openModal(catId, itemIndex) {
+            currentItem = storeData[catId].items[itemIndex];
+            document.getElementById('modal-title').innerText = currentItem.name;
+            document.getElementById('modal-price').innerText = currentItem.price;
+            document.getElementById('modal-desc').innerText = currentItem.desc;
+            
+            document.getElementById('main-modal-img').src = currentItem.images[0];
+            document.getElementById('thumb1').src = currentItem.images[0];
+            document.getElementById('thumb2').src = currentItem.images[1];
+            document.getElementById('thumb3').src = currentItem.images[2];
+
+            const msg = `Hi, Ami ei item-ta kinte chai:\n${currentItem.name} (${currentItem.price})`;
+            document.getElementById('modal-whatsapp').href = `https://wa.me/917679753071?text=${encodeURIComponent(msg)}`;
+            modal.style.display = 'flex';
+        }
+
+        function changeMainImg(src) { document.getElementById('main-modal-img').src = src; }
+        function closeModal() { modal.style.display = 'none'; }
+        window.onclick = function(e) { if (e.target == modal) closeModal(); }
+    </script>
+</body>
+</html>
